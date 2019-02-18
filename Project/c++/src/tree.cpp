@@ -282,7 +282,7 @@ class Tree<TK,TV>::Iterator Tree<TK,TV>::find(const TK& key, const std::unique_p
             // Going left
             find(key, node->left);
         else {
-            std::cout << "Key not found, returning end()1\n";
+            std::cout << "Key not found, returning end()\n";
             //return Iterator{(*this).cend()};
             toReturn = Iterator{(*this).end()};
         }
@@ -291,7 +291,7 @@ class Tree<TK,TV>::Iterator Tree<TK,TV>::find(const TK& key, const std::unique_p
             // Or going right
             find(key, node->right);
         else {
-            std::cout << "Key not found, returning end()2\n";
+            std::cout << "Key not found, returning end()\n";
             //return Iterator{(*this).cend()};
             toReturn = Iterator{(*this).end()};
         }
