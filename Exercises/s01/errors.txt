@@ -1,0 +1,87 @@
+TYPO IN FUNCTION NAME:
+g++: 
+error: ‘c0sut’ was not declared in this scope
+   c0sut << "Hello world" << endl;
+clang++:  
+error: use of undeclared identifier 'c0sut'
+  c0sut << "Hello world" << endl;
+
+TYPO IN VARIABLE
+g++:
+error: ‘A’ was not declared in this scope
+   cout << A << endl;
+clang++:
+error: use of undeclared identifier 'A'
+  cout << A << endl;
+  
+FORGOTTEN SEMICOLON
+g++:
+error: expected ‘;’ before ‘return’
+   return 0;
+clang++: 
+error: expected ';' after expression
+  cout << a << endl
+  
+FORGOTTEN IOSTREAM
+g++: 
+error: ‘cout’ was not declared in this scope
+   cout << a << endl;
+   ^
+errerror: ‘endl’ was not declared in this scope
+   cout << a << endl;
+clang++:
+error: use of undeclared identifier 'cout'
+  cout << a << endl;
+  ^
+error: use of undeclared identifier 'endl'
+  cout << a << endl;
+
+#ERRONEOUS VARIABLE DECLARATION
+g++:
+error: two or more data types in declaration of ‘a’
+   int bool a;
+            ^
+error: ‘a’ was not declared in this scope
+   cout << a << endl;
+clang++:
+error: cannot combine with previous 'int' declaration specifier
+  int bool a;
+      ^
+WRONG TYPE TO FUNCTION:
+g++:
+In function ‘int main()’:
+error: invalid conversion from ‘char*’ to ‘int’ [-fpermissive]
+   funct(a);
+          ^
+note:   initializing argument 1 of ‘int funct(int)’
+ int funct(int a) {
+     ^
+error: invalid conversion from ‘char*’ to ‘int’ [-fpermissive]
+   cout << funct(a) << endl;
+                  ^
+note:   initializing argument 1 of ‘int funct(int)’
+ int funct(int a) {
+
+clang++:
+error: no matching function for call to 'funct'
+  funct(a);
+  ^~~~~
+note: candidate function not viable: no known conversion from 'char *' to 'int'
+      for 1st argument; dereference the argument with *
+int funct(int a) {
+    ^
+error: no matching function for call to 'funct'
+  cout << funct(a) << endl;
+          ^~~~~
+note: candidate function not viable: no known conversion from 'char *' to 'int'
+      for 1st argument; dereference the argument with *
+int funct(int a) {
+    ^
+2 errors generated.
+
+ 
+
+
+
+
+
